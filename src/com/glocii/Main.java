@@ -22,16 +22,16 @@ public class Main {
 
     public static void createGUI() {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("Морской бой");
+        JFrame frame = new JFrame("Battle Ship");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JButton btnStart = new JButton("Начать игру");
+        JButton btnStart = new JButton("Start Game");
         btnStart.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
                 // display/center the jdialog when the button is pressed
-                JDialog d = new JDialog(frame, "Hello", true);
+                JDialog d = new JDialog(frame, "Dialog", true);
                 d.setLocationRelativeTo(frame);
                 d.setVisible(true);
             }
