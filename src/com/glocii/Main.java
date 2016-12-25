@@ -1,5 +1,8 @@
 package com.glocii;
 
+import com.glocii.ui.AboutDialog;
+import com.glocii.ui.frames.WelcomeFrame;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,11 +18,7 @@ public class Main {
 
 	    System.out.println("Hello Sancho!\n I'm answer you!");
 
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createGUI();
-            }
-        });
+        WelcomeFrame.createGUI();
     }
 
 
@@ -33,10 +32,8 @@ public class Main {
         {
             public void actionPerformed(ActionEvent e)
             {
-                // display/center the jdialog when the button is pressed
-                JDialog d = new JDialog(frame, "Dialog", true);
-                d.setLocationRelativeTo(frame);
-                d.setVisible(true);
+                AboutDialog aboutDialog = new AboutDialog();
+                aboutDialog.createDialog(frame);
             }
         });
         frame.getContentPane().add(btnStart);
