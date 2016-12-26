@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
  * Created by Александр on 18.12.2016.
  */
 public class WelcomeFrame {
+
     private static final String WELCOME_FRAME_NAME = "Добро пожаловать в 'Морской бой'";
     private static final int FRAME_WIDTH = 400;
     private static final int FRAME_HEIGHT = 200;
