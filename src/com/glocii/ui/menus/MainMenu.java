@@ -95,4 +95,6 @@ public class MainMenu {
         menuAbout.add(aboutProgramItem);
         return menuBar;
     }
+
+
 }

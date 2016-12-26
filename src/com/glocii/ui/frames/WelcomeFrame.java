@@ -31,6 +31,13 @@ public class WelcomeFrame {
         btnStart.setForeground(Color.WHITE);
         btnStart.setFocusPainted(false);
         btnStart.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameFrame gameFrame = new GameFrame();
+                gameFrame.createField();
+            }
+        });
 
         JButton btnAbout = new JButton("О программе");
         btnAbout.setAlignmentX(JComponent.CENTER_ALIGNMENT);
