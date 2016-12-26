@@ -27,15 +27,20 @@ public class GameFrame {
                 FRAME_WIDTH, FRAME_HEIGHT);
         gameFrame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         Box stateBox = Box.createHorizontalBox();
+        JPanel panel = new JPanel();
         lblState.setText(setShips);
         stateBox.add(lblState);
         stateBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
+        panel.setDoubleBuffered(true);
         
-        gameFrame.add(stateBox);
+        panel.add(stateBox);
        // gameFrame.add(createNumbers());
-        gameFrame.add(new Field());
+        panel.add(new Field());
+        gameFrame.add(panel);
         gameFrame.pack();
         gameFrame.setVisible(true);
+        
+        
     }
     private Box createNumbers () {
         JLabel []numbersArrayLabels = new JLabel[10];
