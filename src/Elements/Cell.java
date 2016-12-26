@@ -46,7 +46,7 @@ public class Cell {
 	}
 	public void paint(Graphics g){
 		g.setColor(Color.MAGENTA);
-		g.draw3DRect(getX(), getY(), getSize(), getSize(), true);
+		g.fill3DRect(getX(), getY(), getSize(), getSize(), true);
 	}
 
 }
