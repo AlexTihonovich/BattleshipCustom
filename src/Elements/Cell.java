@@ -10,6 +10,7 @@ public class Cell {
 	private int size,x,y;
 	public Cell(int size){
 		this.size = size;
+		state = State.Void;
 	}
 
 	public int getSize() {
