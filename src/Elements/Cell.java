@@ -8,6 +8,9 @@ import java.awt.Graphics;
 public class Cell {
 	private State state;
 	private int size,x,y;
+	public Cell(int size){
+		this.size = size;
+	}
 
 	public int getSize() {
 		return size;
