@@ -33,7 +33,7 @@ public class Field extends JPanel{
 	}
 	@Override
 	public void paint(Graphics g){
-		//Расставляем координаты для первых точек букв и цифер.
+		//Расставляем координаты для первых точек букв и цифр.
 		Cell firstCell = cell[0][0];
 		int x = firstCell.getX() - firstCell.getSize();
 		int y = firstCell.getY() - firstCell.getSize()/2;
