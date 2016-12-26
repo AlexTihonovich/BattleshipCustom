@@ -32,7 +32,6 @@ public class GameFrame {
         stateBox.add(lblState);
         stateBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
         panel.setDoubleBuffered(true);
-        
         panel.add(stateBox);
        // gameFrame.add(createNumbers());
         panel.add(new Field());
