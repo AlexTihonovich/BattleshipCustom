@@ -21,8 +21,9 @@ public class Field extends JPanel{
 			}
 		Cell oneCell = cell[0][0];
 		//Задаём размеры поля
-		this.setPreferredSize(new Dimension(oneCell.getSize()*SIZE+oneCell.getSize()/2,oneCell.getSize()*SIZE+oneCell.getSize()/2));
-				
+		this.setPreferredSize(new Dimension(oneCell.getSize()*SIZE+oneCell.getSize(),
+				oneCell.getSize()*SIZE+oneCell.getSize()));
+		this.setDoubleBuffered(true);
 	
 	}
 	@Override
@@ -31,7 +32,6 @@ public class Field extends JPanel{
 			for(int j = 0; j < SIZE; j++){
 				cell[i][j].paint(g);
 			}
-		super.repaint();
 	}
 	
 
