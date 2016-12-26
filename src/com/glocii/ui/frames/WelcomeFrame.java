@@ -24,8 +24,19 @@ public class WelcomeFrame {
         welcomeFrame.setBounds(screenSize.width/2-(FRAME_WIDTH/2), screenSize.height/2-FRAME_HEIGHT/2,
                 FRAME_WIDTH, FRAME_HEIGHT);
 
-        JButton btnStart = new JButton("Start Game");
+        JButton btnStart = new JButton("Начать игру");
+        btnStart.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        btnStart.setBackground(new Color(59, 89, 182));
+        btnStart.setForeground(Color.WHITE);
+        btnStart.setFocusPainted(false);
+        btnStart.setFont(new Font("Tahoma", Font.BOLD, 12));
+
         JButton btnAbout = new JButton("О программе");
+        btnAbout.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        btnAbout.setBackground(new Color(59, 89, 182));
+        btnAbout.setForeground(Color.WHITE);
+        btnAbout.setFocusPainted(false);
+        btnAbout.setFont(new Font("Tahoma", Font.BOLD, 12));
 
         btnAbout.addActionListener(new ActionListener()
         {
@@ -35,15 +46,28 @@ public class WelcomeFrame {
                 aboutDialog.createDialog(welcomeFrame);
             }
         });
-        welcomeFrame.getContentPane().add(btnStart);
-        welcomeFrame.getContentPane().add(btnAbout);
-        welcomeFrame.setPreferredSize(new Dimension(200, 100));
+
+        welcomeFrame.setLayout(new BorderLayout());
+        welcomeFrame.setContentPane(new JLabel(new ImageIcon("D:\\workspace\\Battleship\\src\\resources\\ships.png")));
+        welcomeFrame.setLayout(new FlowLayout());
+        Box box = Box.createVerticalBox();
+
+
+        box.add(Box.createVerticalStrut(80));
+        box.add(btnStart);
+        box.add(Box.createVerticalStrut(10));
+        box.add(btnAbout);
+        box.setBackground(new Color(0, 255, 0, 0));
+
+        welcomeFrame.add(box);
+
+        welcomeFrame.setPreferredSize(new Dimension(300, 300));
 
         welcomeFrame.pack();
         MainMenu mainMenu = new MainMenu();
 
-        welcomeFrame.setJMenuBar(mainMenu.getMenu());
-
+        welcomeFrame.setJMenuBar(mainMenu.getMenu(welcomeFrame));
+        welcomeFrame.setResizable(false);
         welcomeFrame.setVisible(true);
 
     }
