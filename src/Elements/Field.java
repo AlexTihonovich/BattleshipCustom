@@ -1,5 +1,6 @@
 package Elements;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -14,10 +15,13 @@ public class Field extends JPanel{
 			for(int j = 0; j < SIZE; j++){
 				cell[i][j] = new Cell(20);
 				//cell[i][j].getSize()/2 - отсуп для цифр и букв
-				cell[i][j].setX(cell[i][j].getSize()*j+cell[i][j].getSize()/2);
+				cell[i][j].setX(cell[i][j].getSize()*i+cell[i][j].getSize()/2);
 				cell[i][j].setY(cell[i][j].getSize()*j+cell[i][j].getSize()/2);
 				
 			}
+		Cell oneCell = cell[0][0];
+		//Задаём размеры поля
+		this.setPreferredSize(new Dimension(oneCell.getSize()*SIZE+oneCell.getSize()/2,oneCell.getSize()*SIZE+oneCell.getSize()/2));
 				
 	
 	}
@@ -27,6 +31,7 @@ public class Field extends JPanel{
 			for(int j = 0; j < SIZE; j++){
 				cell[i][j].paint(g);
 			}
+		super.repaint();
 	}
 	
 
