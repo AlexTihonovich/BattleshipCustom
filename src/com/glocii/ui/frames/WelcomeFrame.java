@@ -19,7 +19,7 @@ public class WelcomeFrame {
 
     public static void createGUI() {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame welcomeFrame = new JFrame(WELCOME_FRAME_NAME);
+        final JFrame welcomeFrame = new JFrame(WELCOME_FRAME_NAME);
         welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         welcomeFrame.setBounds(screenSize.width/2-(FRAME_WIDTH/2), screenSize.height/2-FRAME_HEIGHT/2,
@@ -32,7 +32,6 @@ public class WelcomeFrame {
         btnStart.setFocusPainted(false);
         btnStart.setFont(new Font("Tahoma", Font.BOLD, 12));
         btnStart.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 GameFrame gameFrame = new GameFrame();
                 gameFrame.createField();

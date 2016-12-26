@@ -23,7 +23,7 @@ public class MainMenu {
     private final String program = "Программа";
 
 
-    public JMenuBar getMenu (JFrame frame) {
+    public JMenuBar getMenu (final JFrame frame) {
         /*
         Основное меню программы, состоит из:
 
@@ -37,7 +37,6 @@ public class MainMenu {
 
         JMenuItem openItem = new JMenuItem(open, KeyEvent.VK_O);
         openItem.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
@@ -46,7 +45,6 @@ public class MainMenu {
         JMenuItem newGameItem = new JMenuItem(newGame, KeyEvent.VK_N);
 
         newGameItem.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
@@ -54,7 +52,6 @@ public class MainMenu {
 
         JMenuItem exitItem = new JMenuItem(exit, KeyEvent.VK_E);
         exitItem.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
@@ -67,7 +64,6 @@ public class MainMenu {
 
         JMenuItem aboutDevItem = new JMenuItem(aboutDev);
         aboutDevItem.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
@@ -75,7 +71,6 @@ public class MainMenu {
 
         JMenuItem aboutProgramItem = new JMenuItem(program);
         aboutProgramItem.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 AboutDialog aboutDialog = new AboutDialog();
                 aboutDialog.createDialog(frame);
@@ -84,7 +79,6 @@ public class MainMenu {
 
         JMenuItem helpItem = new JMenuItem(help, KeyEvent.VK_H);
         helpItem.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
