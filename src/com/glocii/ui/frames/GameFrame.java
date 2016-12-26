@@ -1,6 +1,9 @@
 package com.glocii.ui.frames;
 
 import javax.swing.*;
+
+import Elements.Field;
+
 import java.awt.*;
 
 /**
@@ -27,8 +30,10 @@ public class GameFrame {
         lblState.setText(setShips);
         stateBox.add(lblState);
         stateBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
+        
         gameFrame.add(stateBox);
-        gameFrame.add(createNumbers());
+       // gameFrame.add(createNumbers());
+        gameFrame.add(new Field());
         gameFrame.pack();
         gameFrame.setVisible(true);
     }
