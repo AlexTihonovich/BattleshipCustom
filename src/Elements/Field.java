@@ -17,7 +17,7 @@ public class Field extends JPanel{
 		cell = new Cell[SIZE][SIZE];
 		for(int i = 0; i < SIZE; i++)
 			for(int j = 0; j < SIZE; j++){
-				cell[i][j] = new Cell(20);
+				cell[i][j] = new Cell(30);
 				//cell[i][j].getSize()/2 - отсуп для цифр и букв
 				cell[i][j].setX(cell[i][j].getSize()*i+cell[i][j].getSize()/2);
 				cell[i][j].setY(cell[i][j].getSize()*j+cell[i][j].getSize()/2);
@@ -34,7 +34,7 @@ public class Field extends JPanel{
 	@Override
 	public void paint(Graphics g){
 		Cell firstCell = cell[0][0];
-		int x = firstCell.getX() - firstCell.getSize()/2;
+		int x = firstCell.getX() - firstCell.getSize();
 		int y = firstCell.getY() - firstCell.getSize()/2;
 		for(int i = 0; i < SIZE; i++)
 			for(int j = 0; j < SIZE; j++){
@@ -43,11 +43,11 @@ public class Field extends JPanel{
 		g.setColor(Color.black);
 		g.setFont(font);
 		for(int i = 0; i < SIZE; i++){
-			g.drawString(String.valueOf(al.charAt(i)), x, firstCell.getY() - firstCell.getSize()/2);
-			g.drawString(String.valueOf(i+1), y, firstCell.getX() - firstCell.getSize()/2);
-			System.out.println(x+" "+y);
 			x+= firstCell.getSize();
 			y+= firstCell.getSize();
+			
+			g.drawString(String.valueOf(al.charAt(i)), x+font.getSize()/2, firstCell.getY());
+			g.drawString(String.valueOf(i+1), firstCell.getX()-firstCell.getSize()/2,y+font.getSize()/2 );
 			
 		}
 	}
