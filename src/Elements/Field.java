@@ -45,7 +45,6 @@ public class Field extends JPanel {
 			public void mousePressed(MouseEvent mouseEvent) {
 				// TODO Auto-generated method stub
 				if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
-					System.out.println(mouseEvent.getX()+" "+mouseEvent.getY());
 					for (int i = 0; i < SIZE; i++)
 						for (int j = 0; j < SIZE; j++)
 							if (cell[i][j].getX() < mouseEvent.getX()
@@ -55,6 +54,7 @@ public class Field extends JPanel {
 									&& cell[i][j].getY() + cell[i][j].getSize() > mouseEvent
 											.getY()) {
 								cell[i][j].click();
+								repaint();
 							}
 				}
 			}
@@ -102,7 +102,6 @@ public class Field extends JPanel {
 					y + font.getSize() / 2);
 
 		}
-		super.repaint();
 		
 	}
 
