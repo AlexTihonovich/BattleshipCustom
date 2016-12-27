@@ -54,7 +54,7 @@ public class Field extends JPanel {
 									&& cell[i][j].getY() + cell[i][j].getSize() > mouseEvent
 											.getY()) {
 								cell[i][j].click();
-								repaint();
+								update(getGraphics());
 							}
 				}
 			}
@@ -100,9 +100,8 @@ public class Field extends JPanel {
 			g.drawString(String.valueOf(i + 1),
 					firstCell.getX() - firstCell.getSize() / 2,
 					y + font.getSize() / 2);
-
 		}
-		
+	
 	}
 
 }
