@@ -26,8 +26,8 @@ public class Field extends JPanel{
 		Cell firstCell = cell[0][0];
 		font = new Font("Verdana", Font.PLAIN, firstCell.getSize()/2);
 		//Задаём размеры поля
-		this.setPreferredSize(new Dimension(firstCell.getSize()*SIZE+firstCell.getSize()*2,
-				firstCell.getSize()*SIZE+firstCell.getSize()*2));
+		this.setPreferredSize(new Dimension(firstCell.getSize()*SIZE+firstCell.getSize()/2,
+				firstCell.getSize()*SIZE+firstCell.getSize()/2));
 		this.setDoubleBuffered(true);
 	
 	}
