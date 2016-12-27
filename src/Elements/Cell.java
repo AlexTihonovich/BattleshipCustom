@@ -6,13 +6,21 @@ import java.awt.Graphics;
 
 
 public class Cell {
+	private boolean fire;
 	private State state;
 	private int size,x,y;
+	private Color color;
 	public Cell(int size){
 		this.size = size;
 		state = State.Void;
+		fire = false;
+		color = new Color(59, 89, 182);
 	}
-
+	public void click(){
+		fire = true;
+		if(state == State.Void)
+			state = State.Miss;
+	}
 	public int getSize() {
 		return size;
 	}
@@ -44,9 +52,13 @@ public class Cell {
 	public void setState(State state) {
 		this.state = state;
 	}
+	public boolean getFire(){
+		return fire;
+	}
 	public void paint(Graphics g){
-		g.setColor(Color.MAGENTA);
-		g.fill3DRect(getX(), getY(), getSize(), getSize(), true);
+		g.setColor(color);
+		g.fill3DRect(getX(), getY(), getSize(), getSize(), !fire);
+		
 	}
 
 }
