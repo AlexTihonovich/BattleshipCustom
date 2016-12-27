@@ -1,6 +1,9 @@
 package com.glocii.ui.frames;
 
 import javax.swing.*;
+
+import Elements.Field;
+
 import java.awt.*;
 
 /**
@@ -24,13 +27,19 @@ public class GameFrame {
                 FRAME_WIDTH, FRAME_HEIGHT);
         gameFrame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         Box stateBox = Box.createHorizontalBox();
+        JPanel panel = new JPanel();
         lblState.setText(setShips);
         stateBox.add(lblState);
         stateBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
-        gameFrame.add(stateBox);
-        gameFrame.add(createNumbers());
+        panel.setDoubleBuffered(true);
+        panel.add(stateBox);
+       // gameFrame.add(createNumbers());
+        panel.add(new Field());
+        gameFrame.add(panel);
         gameFrame.pack();
         gameFrame.setVisible(true);
+        
+        
     }
     private Box createNumbers () {
         JLabel []numbersArrayLabels = new JLabel[10];
