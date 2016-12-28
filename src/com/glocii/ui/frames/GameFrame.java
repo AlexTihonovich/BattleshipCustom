@@ -28,13 +28,16 @@ public class GameFrame {
         gameFrame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         Box stateBox = Box.createHorizontalBox();
         JPanel panel = new JPanel();
+        Field field = new Field();
+        field.generate();
         lblState.setText(setShips);
         stateBox.add(lblState);
         stateBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
         panel.setDoubleBuffered(true);
         panel.add(stateBox);
        // gameFrame.add(createNumbers());
-        panel.add(new Field());
+        
+        panel.add(field);
         gameFrame.add(panel);
         gameFrame.pack();
         gameFrame.setVisible(true);
