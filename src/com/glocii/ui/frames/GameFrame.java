@@ -42,13 +42,12 @@ public class GameFrame {
 
 
         fieldsPanel.setDoubleBuffered(true);
-        Field myField = new Field();
+        final Field myField = new Field();
         Field myField2 = new Field();
         fieldsPanel.setLayout(new GridLayout());
         btnRandomShipsGenerator.setText(RANDOM_SHIPS);
         btnRandomShipsGenerator.setAlignmentY(JComponent.BOTTOM_ALIGNMENT);
         btnRandomShipsGenerator.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 myField.generate();
 
