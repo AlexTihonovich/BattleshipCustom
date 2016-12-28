@@ -1,6 +1,7 @@
 package Elements;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 
@@ -10,11 +11,13 @@ public class Cell {
 	private State state;
 	private int size,x,y;
 	private Color color;
+	private Font font;
 	public Cell(int size){
 		this.size = size;
 		state = State.Void;
 		fire = false;
 		color = new Color(59, 89, 182);
+		font = new Font("Verdana", Font.PLAIN, getSize() / 2);
 	}
 	public void clear(){
 		state = State.Void;
@@ -62,7 +65,11 @@ public class Cell {
 	public void paint(Graphics g){
 		g.setColor(color);
 		g.fill3DRect(getX(), getY(), getSize(), getSize(), !fire);
-		
+		if(fire && state == State.Deck){
+			g.setFont(font);
+			g.setColor(Color.red);
+			g.drawString("X", getX(), getY());
+		}
 	}
 
 }
