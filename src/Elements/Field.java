@@ -84,6 +84,15 @@ public class Field extends JPanel {
 				cell[i][j].clear();
 	}
 
+	private int getCountDeck() {
+		int count = 0;
+		for (int i = 0; i < SIZE; i++)
+			for (int j = 0; j < SIZE; j++)
+				if (cell[i][j].getState() == State.Deck)
+					count++;
+		return count;
+	}
+
 	public void generate() {
 		int countDeck = 0;
 		Random random = new Random();
@@ -91,35 +100,52 @@ public class Field extends JPanel {
 			int cordI = random.nextInt(SIZE);
 			int cordJ = random.nextInt(SIZE);
 			if (countDeck > 16) {
-				//Расстановка четырёхпалубника
+				// Расстановка четырёхпалубника
 				Diraction diraction = Diraction.values()[random.nextInt(4)];
 				switch (diraction) {
 				case Down:
 
 				case Up:
-					if (cordI + diraction.get() * 4 < SIZE && cordI + diraction.get()*4>=0) {
-						
-						for(int i = cordI; i !=cordI + diraction.get()*4; i+=diraction.get()){
+					if (cordI + diraction.get() * 4 < SIZE
+							&& cordI + diraction.get() * 4 >= 0) {
+
+						for (int i = cordI; i != cordI + diraction.get() * 4; i += diraction
+								.get()) {
 							cell[i][cordJ].setState(State.Deck);
+							countDeck += 4;
 						}
-					}
+					} else
+						continue;
 					break;
 				case Left:
-					
+
 				case Rigth:
-					if (cordJ + diraction.get() * 4 < SIZE && cordJ + diraction.get()*4>=0) {
-						
-						for(int j = cordJ; j !=cordJ + diraction.get()*4; j+=diraction.get()){
+					if (cordJ + diraction.get() * 4 < SIZE
+							&& cordJ + diraction.get() * 4 >= 0) {
+
+						for (int j = cordJ; j != cordJ + diraction.get() * 4; j += diraction
+								.get()) {
 							cell[cordI][j].setState(State.Deck);
+							countDeck += 4;
 						}
-					}
+					} else
+						continue;
 					break;
 
 				default:
 					break;
 
 				}
+			} else if (countDeck > 10) {
+				//Расстановка трёхпалубников
+
+			} else if(countDeck > 4){
+				//Расстановка двухпалубников
 			}
+			else{
+				//Расстановка однопалубников
+			}
+			
 
 		}
 
