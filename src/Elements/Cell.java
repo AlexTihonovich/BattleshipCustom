@@ -68,7 +68,7 @@ public class Cell {
 		if(fire && state == State.Deck){
 			g.setFont(font);
 			g.setColor(Color.red);
-			g.drawString("X", getX(), getY());
+			g.drawString("X", getX()+getSize()/2-font.getSize()/2, getY()+getSize()/2);
 		}
 	}
 
