@@ -32,6 +32,7 @@ public class Field extends JPanel {
 		Cell firstCell = cell[0][0];
 		font = new Font("Verdana", Font.PLAIN, firstCell.getSize() / 2);
 		// Задаём размеры поля
+
 		this.setPreferredSize(new Dimension(firstCell.getSize() * SIZE
 				+ firstCell.getSize(), firstCell.getSize() * SIZE
 				+ firstCell.getSize()));
@@ -45,18 +46,20 @@ public class Field extends JPanel {
 
 			public void mousePressed(MouseEvent mouseEvent) {
 				// TODO Auto-generated method stub
-				if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
-					for (int i = 0; i < SIZE; i++)
-						for (int j = 0; j < SIZE; j++)
+				if (mouseEvent.getButton() == MouseEvent.BUTTON3) {
+					for (int i = 0; i < SIZE; i++) {
+						for (int j = 0; j < SIZE; j++) {
 							if (cell[i][j].getX() < mouseEvent.getX()
 									&& cell[i][j].getX() + cell[i][j].getSize() > mouseEvent
-											.getX()
+									.getX()
 									&& cell[i][j].getY() < mouseEvent.getY()
 									&& cell[i][j].getY() + cell[i][j].getSize() > mouseEvent
-											.getY()) {
+									.getY()) {
 								cell[i][j].click();
 								update(getGraphics());
 							}
+						}
+					}
 				}
 			}
 
@@ -80,8 +83,10 @@ public class Field extends JPanel {
 	// Очистка поля для генерации кораблей
 	public void clear() {
 		for (int i = 0; i < SIZE; i++)
-			for (int j = 0; j < SIZE; j++)
+			for (int j = 0; j < SIZE; j++) {
+
 				cell[i][j].clear();
+			}
 	}
 
 	private int getCountDeck() {
@@ -200,8 +205,9 @@ public class Field extends JPanel {
 					countDeck -= 1;
 				}
 			}
-
+			update(getGraphics());
 		}
+		/*
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
 			
@@ -209,6 +215,7 @@ public class Field extends JPanel {
 			}
 
 		}
+		*/
 
 	}
 

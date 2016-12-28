@@ -16,58 +16,60 @@ public class GameFrame {
     private static final String GAME_NAME = "Игра";
     private static final int FRAME_WIDTH = 800;
     private static final int FRAME_HEIGHT = 600;
+    private static final String YOUR_TURN = "Ваш ход";
+    private static final String ENEMY_TURN = "Противник ходит";
+    private static final String YOU_WIN = "Вы проиграли";
+    private static final String YOU_LOOSE = "Вы победили";
+    private static final String RANDOM_SHIPS = "Сгенерировать корабли";
 
     private final String setShips = "Расставьте корабли";
-
+    private JLabel lblGameState = new JLabel();
     private JLabel lblState = new JLabel(setShips);
+    private JButton btnRandomShipsGenerator = new JButton();
 
     public void createField () {
         JFrame gameFrame = new JFrame();
+        gameFrame.setLayout(new FlowLayout());
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         gameFrame.setBounds(screenSize.width/2-(FRAME_WIDTH/2), screenSize.height/2-FRAME_HEIGHT/2,
                 FRAME_WIDTH, FRAME_HEIGHT);
         gameFrame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
-        Box stateBox = Box.createHorizontalBox();
-        JButton generateRandom = new JButton("Рандомно");
-        
-        JPanel panel = new JPanel();
-        final Field field = new Field();
-        panel.add(generateRandom);
-        field.generate();
-        generateRandom.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				field.generate();
-				field.update(field.getGraphics());
-				
-			}
-		});
-        lblState.setText(setShips);
-        stateBox.add(lblState);
-        stateBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
-        panel.setDoubleBuffered(true);
-        panel.add(stateBox);
-       // gameFrame.add(createNumbers());
-        
-        panel.add(field);
-        gameFrame.add(panel);
+
+        JPanel fieldsPanel = new JPanel();
+        JPanel fieldsHelpPanel = new JPanel();
+        JPanel gameStatePanel = new JPanel();
+
+
+        fieldsPanel.setDoubleBuffered(true);
+        Field myField = new Field();
+        Field myField2 = new Field();
+        fieldsPanel.setLayout(new GridLayout());
+        btnRandomShipsGenerator.setText(RANDOM_SHIPS);
+        btnRandomShipsGenerator.setAlignmentY(JComponent.BOTTOM_ALIGNMENT);
+        btnRandomShipsGenerator.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                myField.generate();
+
+            }
+        });
+
+
+        lblGameState.setText(String.format("<html> <font color='red'>%s</font></html>", YOUR_TURN));
+
+        fieldsPanel.setBackground(Color.DARK_GRAY);
+        fieldsHelpPanel.add(btnRandomShipsGenerator);
+        fieldsPanel.add(myField);
+        fieldsPanel.add(myField2);
+        gameStatePanel.add(lblGameState);
+
+        gameFrame.add(fieldsPanel);
+        gameFrame.add(fieldsHelpPanel);
+        gameFrame.add(gameStatePanel);
         gameFrame.pack();
         gameFrame.setVisible(true);
         
-        
-    }
-    private Box createNumbers () {
-        JLabel []numbersArrayLabels = new JLabel[10];
-        Box numBox = Box.createVerticalBox();
-        for (int i = 0; i < numbersArrayLabels.length; i++) {
-            numbersArrayLabels[i] = new JLabel();
-            numbersArrayLabels[i].setText(String.valueOf(i+1));
-            numBox.setAlignmentY(JComponent.CENTER_ALIGNMENT);
-            numBox.add(numbersArrayLabels[i]);
-        }
-        return numBox;
     }
 
 

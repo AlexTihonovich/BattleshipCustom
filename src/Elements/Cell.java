@@ -25,9 +25,11 @@ public class Cell {
 	}
 	public void click(){
 		fire = true;
-		if(state == State.Void)
+		if(state == State.Void) {
 			state = State.Miss;
+		}
 	}
+
 	public int getSize() {
 		return size;
 	}
