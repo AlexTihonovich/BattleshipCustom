@@ -80,7 +80,7 @@ public class Field extends JPanel {
 	// Очистка поля для генерации кораблей
 	public void clear() {
 		for (int i = 0; i < SIZE; i++)
-			for (int j = 0; i < SIZE; j++)
+			for (int j = 0; j < SIZE; j++)
 				cell[i][j].clear();
 	}
 
@@ -200,6 +200,12 @@ public class Field extends JPanel {
 					countDeck-=1;
 			}
 
+		}
+		for(int i = 0; i < SIZE; i++){
+			for(int j = 0; j<SIZE; j++)
+				System.out.print(cell[i][j].getState() == State.Deck ? 1+ " ": 0 +" ");
+			System.out.println();
+				
 		}
 
 	}
