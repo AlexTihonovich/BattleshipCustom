@@ -22,18 +22,16 @@ public class Field extends JPanel {
 			for (int j = 0; j < SIZE; j++) {
 				cell[i][j] = new Cell(30);
 				// cell[i][j].getSize()/2 - отсуп для цифр и букв
-				cell[i][j].setX(cell[i][j].getSize() * i + cell[i][j].getSize()
-						/ 2);
-				cell[i][j].setY(cell[i][j].getSize() * j + cell[i][j].getSize()
-						/ 2);
+				cell[i][j].setX(cell[i][j].getSize() * i + cell[i][j].getSize());
+				cell[i][j].setY(cell[i][j].getSize() * j + cell[i][j].getSize());
 
 			}
 		Cell firstCell = cell[0][0];
 		font = new Font("Verdana", Font.PLAIN, firstCell.getSize() / 2);
 		// Задаём размеры поля
 		this.setPreferredSize(new Dimension(firstCell.getSize() * SIZE
-				+ firstCell.getSize() / 2, firstCell.getSize() * SIZE
-				+ firstCell.getSize() / 2));
+				+ firstCell.getSize(), firstCell.getSize() * SIZE
+				+ firstCell.getSize()));
 		this.setDoubleBuffered(true);
 		this.addMouseListener(new MouseListener() {
 
@@ -96,9 +94,9 @@ public class Field extends JPanel {
 			y += firstCell.getSize();
 
 			g.drawString(String.valueOf(al.charAt(i)), x + font.getSize() / 2,
-					firstCell.getY());
+					firstCell.getY()-firstCell.getSize()/2);
 			g.drawString(String.valueOf(i + 1),
-					firstCell.getX() - firstCell.getSize() / 2,
+					firstCell.getX() - firstCell.getSize() ,
 					y + font.getSize() / 2);
 		}
 	
