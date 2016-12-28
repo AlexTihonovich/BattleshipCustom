@@ -94,6 +94,7 @@ public class Field extends JPanel {
 	}
 
 	public void generate() {
+		this.clear();
 		int countDeck = 0;
 		Random random = new Random();
 		while (countDeck != 20) {
