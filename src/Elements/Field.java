@@ -97,7 +97,6 @@ public class Field extends JPanel {
 			int countDeck) {
 		// Проверка вокруг диапозона клеток
 		// Стоит ли корабль
-//		System.out.println(diraction + ":");
 		switch (diraction) {
 		case Up:
 		case Down:
@@ -107,7 +106,6 @@ public class Field extends JPanel {
 				for (int i = diraction.get() == 1 ? cordI - 1 : cordI + 1, i1 = 0; i1 < countDeck+2; i += diraction
 						.get(),i1++) {
 					for (int j = cordJ - 1; j <= cordJ + 1; j++) {
-						// System.out.println(i + " " + j);
 						if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
 							if (cell[i][j].getState() == State.Deck)
 								return false;
@@ -123,7 +121,6 @@ public class Field extends JPanel {
 				for (int i = cordI - 1; i <= cordI + 1; i++) {
 					for (int j = diraction.get() == 1 ? cordJ - 1 : cordJ + 1,j1 = 0; j1<countDeck+2; j += diraction
 							.get(),j1++) {
-						// System.out.println(i + " " + j);
 						if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
 							if (cell[i][j].getState() == State.Deck)
 								return false;
@@ -180,31 +177,26 @@ public class Field extends JPanel {
 			int cordJ = random.nextInt(SIZE);
 			Diraction diraction = Diraction.values()[random.nextInt(Diraction
 					.values().length)];
-			// System.out.println(cordI+" "+ cordJ+" "+ diraction.toString());
 			if (countDeck > 16) {
 				// Расстановка четырёхпалубника
 				if (putShip(diraction, cordI, cordJ, 4)) {
-					System.out.println(diraction + " "+cordI+ " "+cordJ+ " "+4);
 					countDeck -= 4;
 				}
 
 			} else if (countDeck > 10) {
 				// Расстановка трёхпалубников
 				if (putShip(diraction, cordI, cordJ, 3)) {
-					System.out.println(diraction + " "+cordI+ " "+cordJ+ " "+3);
 					countDeck -= 3;
 				}
 
 			} else if (countDeck > 4) {
 				// Расстановка двухпалубников
 				if (putShip(diraction, cordI, cordJ, 2)) {
-					System.out.println(diraction + " "+cordI+ " "+cordJ+ " "+2);
 					countDeck -= 2;
 				}
 			} else {
 				// Расстановка однопалубников
 				if (putShip(diraction, cordI, cordJ, 1)) {
-					System.out.println(diraction + " "+cordI+ " "+cordJ+ " "+1);
 					countDeck -= 1;
 				}
 			}
@@ -212,11 +204,9 @@ public class Field extends JPanel {
 		}
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
-				System.out.print(cell[i][j].getState() == State.Deck ? 1 + " "
-						: 0 + " ");
+			
 				cell[i][j].click();
 			}
-			System.out.println();
 
 		}
 
