@@ -104,9 +104,8 @@ public class Field extends JPanel {
 			if (cordI + diraction.get() * countDeck < SIZE
 					&& cordI + diraction.get() * countDeck >= 0) {
 
-				for (int i = diraction.get() == 1 ? cordI - 1 : cordI + 1; i <= cordI
-						+ diraction.get() * countDeck + diraction.get(); i += diraction
-						.get()) {
+				for (int i = diraction.get() == 1 ? cordI - 1 : cordI + 1, i1 = 0; i1 < countDeck+2; i += diraction
+						.get(),i1++) {
 					for (int j = cordJ - 1; j <= cordJ + 1; j++) {
 						// System.out.println(i + " " + j);
 						if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
@@ -122,9 +121,8 @@ public class Field extends JPanel {
 					&& cordJ + diraction.get() * countDeck >= 0) {
 
 				for (int i = cordI - 1; i <= cordI + 1; i++) {
-					for (int j = diraction.get() == 1 ? cordJ - 1 : cordJ + 1; j <= cordJ
-							+ diraction.get() * countDeck + diraction.get(); j += diraction
-							.get()) {
+					for (int j = diraction.get() == 1 ? cordJ - 1 : cordJ + 1,j1 = 0; j1<countDeck+2; j += diraction
+							.get(),j1++) {
 						// System.out.println(i + " " + j);
 						if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
 							if (cell[i][j].getState() == State.Deck)
