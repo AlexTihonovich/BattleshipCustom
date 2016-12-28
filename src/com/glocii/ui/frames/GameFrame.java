@@ -5,6 +5,8 @@ import javax.swing.*;
 import Elements.Field;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Александр on 26.12.2016.
@@ -27,9 +29,21 @@ public class GameFrame {
                 FRAME_WIDTH, FRAME_HEIGHT);
         gameFrame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         Box stateBox = Box.createHorizontalBox();
+        JButton generateRandom = new JButton("Рандомно");
+        
         JPanel panel = new JPanel();
-        Field field = new Field();
+        final Field field = new Field();
+        panel.add(generateRandom);
         field.generate();
+        generateRandom.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				field.generate();
+				field.update(field.getGraphics());
+				
+			}
+		});
         lblState.setText(setShips);
         stateBox.add(lblState);
         stateBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
