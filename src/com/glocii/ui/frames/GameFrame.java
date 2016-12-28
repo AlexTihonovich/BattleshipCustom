@@ -56,10 +56,13 @@ public class GameFrame {
 
 
         lblGameState.setText(String.format("<html> <font color='red'>%s</font></html>", YOUR_TURN));
-
         fieldsPanel.setBackground(Color.DARK_GRAY);
         fieldsHelpPanel.add(btnRandomShipsGenerator);
+        JPanel panel = new JPanel();
+        panel.setBackground(fieldsPanel.getBackground());
+        myField.setEnabled(false);
         fieldsPanel.add(myField);
+        fieldsPanel.add(panel);
         fieldsPanel.add(myField2);
         gameStatePanel.add(lblGameState);
 
