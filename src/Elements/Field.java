@@ -22,8 +22,10 @@ public class Field extends JPanel {
 			for (int j = 0; j < SIZE; j++) {
 				cell[i][j] = new Cell(30);
 				// cell[i][j].getSize()/2 - отсуп для цифр и букв
-				cell[i][j].setX(cell[i][j].getSize() * i + cell[i][j].getSize());
-				cell[i][j].setY(cell[i][j].getSize() * j + cell[i][j].getSize());
+				cell[i][j]
+						.setX(cell[i][j].getSize() * i + cell[i][j].getSize());
+				cell[i][j]
+						.setY(cell[i][j].getSize() * j + cell[i][j].getSize());
 
 			}
 		Cell firstCell = cell[0][0];
@@ -72,7 +74,13 @@ public class Field extends JPanel {
 
 			}
 		});
+	}
 
+	// Очистка поля для генерации кораблей
+	public void clear() {
+		for (int i = 0; i < SIZE; i++)
+			for (int j = 0; i < SIZE; j++)
+				cell[i][j].clear();
 	}
 
 	@Override
@@ -94,12 +102,12 @@ public class Field extends JPanel {
 			y += firstCell.getSize();
 
 			g.drawString(String.valueOf(al.charAt(i)), x + font.getSize() / 2,
-					firstCell.getY()-firstCell.getSize()/2);
+					firstCell.getY() - firstCell.getSize() / 2);
 			g.drawString(String.valueOf(i + 1),
-					firstCell.getX() - firstCell.getSize() ,
-					y + font.getSize() / 2);
+					firstCell.getX() - firstCell.getSize(), y + font.getSize()
+							/ 2);
 		}
-	
+
 	}
 
 }

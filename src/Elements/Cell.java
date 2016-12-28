@@ -16,6 +16,10 @@ public class Cell {
 		fire = false;
 		color = new Color(59, 89, 182);
 	}
+	public void clear(){
+		state = State.Void;
+		fire = false;
+	}
 	public void click(){
 		fire = true;
 		if(state == State.Void)
