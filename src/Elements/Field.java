@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -81,6 +82,47 @@ public class Field extends JPanel {
 		for (int i = 0; i < SIZE; i++)
 			for (int j = 0; i < SIZE; j++)
 				cell[i][j].clear();
+	}
+
+	public void generate() {
+		int countDeck = 0;
+		Random random = new Random();
+		while (countDeck != 20) {
+			int cordI = random.nextInt(SIZE);
+			int cordJ = random.nextInt(SIZE);
+			if (countDeck > 16) {
+				//Расстановка четырёхпалубника
+				Diraction diraction = Diraction.values()[random.nextInt(4)];
+				switch (diraction) {
+				case Down:
+
+				case Up:
+					if (cordI + diraction.get() * 4 < SIZE && cordI + diraction.get()*4>=0) {
+						
+						for(int i = cordI; i !=cordI + diraction.get()*4; i+=diraction.get()){
+							cell[i][cordJ].setState(State.Deck);
+						}
+					}
+					break;
+				case Left:
+					
+				case Rigth:
+					if (cordJ + diraction.get() * 4 < SIZE && cordJ + diraction.get()*4>=0) {
+						
+						for(int j = cordJ; j !=cordJ + diraction.get()*4; j+=diraction.get()){
+							cell[cordI][j].setState(State.Deck);
+						}
+					}
+					break;
+
+				default:
+					break;
+
+				}
+			}
+
+		}
+
 	}
 
 	@Override
