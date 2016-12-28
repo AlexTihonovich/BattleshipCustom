@@ -93,60 +93,112 @@ public class Field extends JPanel {
 		return count;
 	}
 
+	private boolean checkDiapasone(Diraction diraction, int cordI, int cordJ,
+			int countDeck) {
+		// Проверка вокруг диапозона клеток
+		// Стоит ли корабль
+		switch(diraction){
+		case Up:
+		case Down:
+			if (cordI + diraction.get() * countDeck < SIZE
+					&& cordI + diraction.get() * countDeck >= 0){
+				try{				
+				for (int i = diraction.get()==1?cordI-1: cordI+1; i != cordI + diraction.get()* countDeck+diraction.get(); i += diraction.get()) {
+					for(int j = cordJ-1; j < cordJ+1; j++)
+						if(cell[i][j].getState() == State.Deck)
+							return false;
+				}
+				}catch(Exception ex){};
+				
+			}
+			else
+			return false;
+		case Left:
+		case Rigth:
+			if (cordJ + diraction.get() * countDeck < SIZE
+					&& cordJ + diraction.get() * countDeck >= 0){
+				try{				
+					for(int i = cordI-1; i < cordI+1; i++) {					
+						for (int j = diraction.get()==1?cordJ-1: cordJ+1; j != cordJ + diraction.get()* countDeck+diraction.get(); j += diraction.get())
+						if(cell[i][j].getState() == State.Deck)
+							return false;
+				}
+				}catch(Exception ex){};
+				
+			}
+			return false;
+		}
+
+		return true;
+
+	}
+
+	private boolean putShip(Diraction diraction, int cordI, int cordJ,
+			int countDeck) {
+		switch (diraction) {
+		case Down:
+
+		case Up:
+				if (checkDiapasone(diraction, cordI, cordJ, countDeck)){
+					for (int i = cordI; i != cordI + diraction.get()*countDeck; i += diraction.get()) {
+						cell[i][cordJ].setState(State.Deck);
+					}
+					return true;
+			} else 
+				return false;
+		case Left:
+
+		case Rigth:
+			
+				if (checkDiapasone(diraction, cordI, cordJ, countDeck)){
+					for (int j = cordJ; j != cordJ + diraction.get()
+							* countDeck; j += diraction.get()) {
+						cell[cordI][j].setState(State.Deck);
+					}
+					return true;
+			} else
+				return false;
+		default:
+			return false;
+
+		}
+	}
+
 	public void generate() {
 		this.clear();
-		int countDeck = 0;
+		int countDeck = 20;
 		Random random = new Random();
 		while (countDeck != 20) {
 			int cordI = random.nextInt(SIZE);
 			int cordJ = random.nextInt(SIZE);
+			Diraction diraction = Diraction.values()[random.nextInt(Diraction.values().length)];
 			if (countDeck > 16) {
 				// Расстановка четырёхпалубника
-				Diraction diraction = Diraction.values()[random.nextInt(4)];
-				switch (diraction) {
-				case Down:
+				if(!putShip(diraction, cordI, cordJ, 4))
+					continue;
+				else
+					countDeck-=4;
 
-				case Up:
-					if (cordI + diraction.get() * 4 < SIZE
-							&& cordI + diraction.get() * 4 >= 0) {
-
-						for (int i = cordI; i != cordI + diraction.get() * 4; i += diraction
-								.get()) {
-							cell[i][cordJ].setState(State.Deck);
-							countDeck += 4;
-						}
-					} else
-						continue;
-					break;
-				case Left:
-
-				case Rigth:
-					if (cordJ + diraction.get() * 4 < SIZE
-							&& cordJ + diraction.get() * 4 >= 0) {
-
-						for (int j = cordJ; j != cordJ + diraction.get() * 4; j += diraction
-								.get()) {
-							cell[cordI][j].setState(State.Deck);
-							countDeck += 4;
-						}
-					} else
-						continue;
-					break;
-
-				default:
-					break;
-
-				}
 			} else if (countDeck > 10) {
-				//Расстановка трёхпалубников
+				// Расстановка трёхпалубников
+				if(!putShip(diraction, cordI, cordJ, 3))
+					continue;
+				else
+					countDeck-=3;
 
-			} else if(countDeck > 4){
-				//Расстановка двухпалубников
+			} else if (countDeck > 4) {
+				// Расстановка двухпалубников
+				if(!putShip(diraction, cordI, cordJ, 2))
+					continue;
+				else
+					countDeck-=2;
+			} else {
+				// Расстановка однопалубников
+				if(!putShip(diraction, cordI, cordJ, 1))
+					continue;
+				else
+					countDeck-=1;
 			}
-			else{
-				//Расстановка однопалубников
-			}
-			
 
 		}
 
