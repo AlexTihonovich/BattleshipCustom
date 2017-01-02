@@ -42,8 +42,8 @@ public class GameFrame {
 
 
         fieldsPanel.setDoubleBuffered(true);
-        Field myField = new Field(true);
-        Field myField2 = new Field(false);
+        final Field myField = new Field(true);
+        final Field myField2 = new Field(false);
         fieldsPanel.setLayout(new GridLayout());
         btnRandomShipsGenerator.setText(RANDOM_SHIPS);
         btnRandomShipsGenerator.setAlignmentY(JComponent.BOTTOM_ALIGNMENT);
