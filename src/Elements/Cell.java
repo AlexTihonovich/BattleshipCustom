@@ -7,6 +7,7 @@ import java.awt.Graphics;
 public class Cell {
 
 	private boolean fire;
+	private boolean friendly;
 	private State state;
 	private int size, x, y;
 	private Color color;
@@ -71,12 +72,20 @@ public class Cell {
 	public void paint(Graphics g) {
 		g.setColor(color);
 		g.fill3DRect(getX(), getY(), getSize(), getSize(), !fire);
-		if (fire && state == State.Deck) {
+		if (fire && state == State.Deck || isFriendly()&&state == State.Deck) {
 			g.setFont(font);
-			g.setColor(Color.red);
+			g.setColor(isFriendly()?Color.green:Color.red);
 			g.drawString("X", getX() + getSize() / 2 - font.getSize() / 2,
 					getY() + getSize() / 2);
 		}
+	}
+
+	public boolean isFriendly() {
+		return friendly;
+	}
+
+	public void setFriendly(boolean friendly) {
+		this.friendly = friendly;
 	}
 
 }

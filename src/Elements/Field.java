@@ -16,7 +16,7 @@ public class Field extends JPanel {
 	private final String al = "АБВГДЕЖЗИК";
 	private Cell[][] cell;
 
-	public Field() {
+	public Field(boolean friendly) {
 		super();
 		cell = new Cell[SIZE][SIZE];
 		for (int i = 0; i < SIZE; i++)
@@ -27,6 +27,7 @@ public class Field extends JPanel {
 						.setX(cell[i][j].getSize() * j + cell[i][j].getSize());
 				cell[i][j]
 						.setY(cell[i][j].getSize() * i + cell[i][j].getSize());
+				cell[i][j].setFriendly(friendly);
 
 			}
 		Cell firstCell = cell[0][0];
