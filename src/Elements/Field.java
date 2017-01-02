@@ -47,21 +47,25 @@ public class Field extends JPanel {
 
 			public void mousePressed(MouseEvent mouseEvent) {
 				// TODO Auto-generated method stub
-				if (mouseEvent.getButton() == MouseEvent.BUTTON3) {
-					for (int i = 0; i < SIZE; i++) {
-						for (int j = 0; j < SIZE; j++) {
-							if (cell[i][j].getX() < mouseEvent.getX()
-									&& cell[i][j].getX() + cell[i][j].getSize() > mouseEvent
-									.getX()
-									&& cell[i][j].getY() < mouseEvent.getY()
-									&& cell[i][j].getY() + cell[i][j].getSize() > mouseEvent
-									.getY()) {
-								cell[i][j].click();
-								update(getGraphics());
+				if (!cell[0][0].isFriendly())
+					if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
+						for (int i = 0; i < SIZE; i++) {
+							for (int j = 0; j < SIZE; j++) {
+								if (cell[i][j].getX() < mouseEvent.getX()
+										&& cell[i][j].getX()
+												+ cell[i][j].getSize() > mouseEvent
+													.getX()
+										&& cell[i][j].getY() < mouseEvent
+												.getY()
+										&& cell[i][j].getY()
+												+ cell[i][j].getSize() > mouseEvent
+													.getY()) {
+									cell[i][j].click();
+									update(getGraphics());
+								}
 							}
 						}
 					}
-				}
 			}
 
 			public void mouseExited(MouseEvent arg0) {
@@ -109,8 +113,8 @@ public class Field extends JPanel {
 			if (cordI + diraction.get() * countDeck < SIZE
 					&& cordI + diraction.get() * countDeck >= 0) {
 
-				for (int i = diraction.get() == 1 ? cordI - 1 : cordI + 1, i1 = 0; i1 < countDeck+2; i += diraction
-						.get(),i1++) {
+				for (int i = diraction.get() == 1 ? cordI - 1 : cordI + 1, i1 = 0; i1 < countDeck + 2; i += diraction
+						.get(), i1++) {
 					for (int j = cordJ - 1; j <= cordJ + 1; j++) {
 						if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
 							if (cell[i][j].getState() == State.Deck)
@@ -125,8 +129,8 @@ public class Field extends JPanel {
 					&& cordJ + diraction.get() * countDeck >= 0) {
 
 				for (int i = cordI - 1; i <= cordI + 1; i++) {
-					for (int j = diraction.get() == 1 ? cordJ - 1 : cordJ + 1,j1 = 0; j1<countDeck+2; j += diraction
-							.get(),j1++) {
+					for (int j = diraction.get() == 1 ? cordJ - 1 : cordJ + 1, j1 = 0; j1 < countDeck + 2; j += diraction
+							.get(), j1++) {
 						if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
 							if (cell[i][j].getState() == State.Deck)
 								return false;
@@ -161,7 +165,7 @@ public class Field extends JPanel {
 
 			if (checkDiapasone(diraction, cordI, cordJ, countDeck)) {
 				for (int j = cordJ, j1 = 0; j1 < countDeck; j += diraction
-						.get(),j1++) {
+						.get(), j1++) {
 					cell[cordI][j].setState(State.Deck);
 				}
 				return true;
@@ -209,14 +213,12 @@ public class Field extends JPanel {
 			update(getGraphics());
 		}
 		/*
-		for (int i = 0; i < SIZE; i++) {
-			for (int j = 0; j < SIZE; j++) {
-			
-				cell[i][j].click();
-			}
-
-		}
-		*/
+		 * for (int i = 0; i < SIZE; i++) { for (int j = 0; j < SIZE; j++) {
+		 * 
+		 * cell[i][j].click(); }
+		 * 
+		 * }
+		 */
 
 	}
 
