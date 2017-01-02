@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class GameFrame {
 
     private static final String GAME_NAME = "Игра";
-    private static final int FRAME_WIDTH = 800;
+    private static final int FRAME_WIDTH = 1000;
     private static final int FRAME_HEIGHT = 600;
     private static final String YOUR_TURN = "Ваш ход";
     private static final String ENEMY_TURN = "Противник ходит";
@@ -42,7 +42,7 @@ public class GameFrame {
 
 
         fieldsPanel.setDoubleBuffered(true);
-        final Field myField = new Field(true);
+        Field myField = new Field(true);
         Field myField2 = new Field(false);
         fieldsPanel.setLayout(new GridLayout());
         btnRandomShipsGenerator.setText(RANDOM_SHIPS);
@@ -50,7 +50,7 @@ public class GameFrame {
         btnRandomShipsGenerator.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 myField.generate();
-
+                myField2.generate();
             }
         });
 
